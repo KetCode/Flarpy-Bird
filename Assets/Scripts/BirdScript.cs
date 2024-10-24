@@ -9,6 +9,13 @@ public class BirdScript : MonoBehaviour
     public float flapStrength; 
     public LogicScript logic;
     public bool birdIsAlive = true;
+    private Camera _camera;
+
+    void Awake()
+    {
+        _camera = Camera.main;
+    }
+
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
@@ -20,6 +27,8 @@ public class BirdScript : MonoBehaviour
         {
             Jump();
         }
+        
+        GameOverWhenOffScreen();
     }
 
     void Jump()
@@ -31,5 +40,17 @@ public class BirdScript : MonoBehaviour
     {
         logic.GameOver();
         birdIsAlive = false;
+    }
+
+    void GameOverWhenOffScreen()
+    {
+        Vector2 screenPosition = _camera.WorldToScreenPoint(transform.position);
+
+        if (birdIsAlive && (screenPosition.x > _camera.pixelWidth || screenPosition.y > _camera.pixelHeight ||
+                            screenPosition.x < 0 || screenPosition.y < 0))
+        {
+            logic.GameOver();
+            birdIsAlive = false;
+        }
     }
 }
