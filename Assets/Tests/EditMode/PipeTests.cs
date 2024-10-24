@@ -20,17 +20,17 @@ public class PipeTests
         
         pipeInstance = Object.Instantiate(pipePrefab);
         pipeMove = pipeInstance.GetComponent<PipeMoveScript>();
-        Assert.IsNotNull(pipeMove, "PipeMoveScript component not found on Pipe Prefab.");
+        Assert.IsNotNull(pipeMove, "PipeMoveScript component not found in 'Pipe' Prefab.");
         
         pipeSpawner = GameObject.Find("Pipe Spawner");
         pipeSpawn = pipeSpawner.GetComponent<PipeSpawnScript>();
-        Assert.IsNotNull(pipeSpawn, "PipeSpawnScript component not found on Pipe Spawner.");
+        Assert.IsNotNull(pipeSpawn, "PipeSpawnScript component not found in 'Pipe Spawner' GameObject.");
     }
     
     [Test]
     public void PipePrefab_CorrectMovementProperties_ShouldBeSet()
     {
-        Assert.IsNotNull(pipeMove, "O componente PipeMoveScript não foi encontrado no Prefab 'Pipe'.");
+        Assert.IsNotNull(pipeMove, "PipeMoveScript component not found in 'Pipe' Prefab.");
         
         Assert.AreEqual(6, pipeMove.moveSpeed, "Speed should be 6.");
         Assert.IsNotNull(pipeMove.moveSpeed, "Speed not found in PipeMoveScript.");
@@ -48,8 +48,8 @@ public class PipeTests
     [Test]
     public void PipeSpawner_CorrectInitialProperties_ShouldBeSet()
     {
-        Assert.IsNotNull(pipeSpawn, "O componente PipeSpawnScript não foi encontrado no GameObject 'Pipe Spawner'.");
-        Assert.IsNotNull(pipeSpawn.pipe, "O Pipe Prefab não foi encontrado no GameObject 'Pipe Spawner'.");
+        Assert.IsNotNull(pipeSpawn, "PipeSpawnScript component not found in 'Pipe Spawner' GameObject.");
+        Assert.IsNotNull(pipeSpawn.pipe, "Pipe Prefab not found in 'Pipe Spawner' GameObject.");
         
         Assert.AreEqual(2.5, pipeSpawn.spawnRate, "SpawnRate should be 2.5.");
         Assert.IsNotNull(pipeSpawn.spawnRate, "Spawn Rate not found in PipeSpawnScript.");
