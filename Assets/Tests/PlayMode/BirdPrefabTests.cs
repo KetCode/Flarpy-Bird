@@ -97,7 +97,7 @@ public class BirdPrefabTests
     }
 
     [UnityTest]
-    public IEnumerator Death_BirdDies_WhenHitObstacles()
+    public IEnumerator GameOver_BirdDies_WhenHitObstacles()
     {
         // --------- PLAYER CHECK --------- //
         GameObject bird = GameObject.Find("Bird");
@@ -125,7 +125,7 @@ public class BirdPrefabTests
     }
 
     [UnityTest]
-    public IEnumerator Death_BirdDies_WhenOutOfCamera()
+    public IEnumerator GameOver_BirdDies_WhenOutOfCamera()
     {
         // --------- PLAYER CHECK --------- //
         GameObject bird = GameObject.Find("Bird");
